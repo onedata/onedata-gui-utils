@@ -9,14 +9,16 @@ FRONTEND_TASK=$5
 FRONTEND_CHANGELOG=$6
 BAMBOO_USER=$7
 
+GUI_CONFIG_FILENAME="gui-image.conf"
+BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
+
 cd /tmp || exit $?
 rm -rf $BACKEND_NAME || exit $?
 git clone ssh://git@git.plgrid.pl:7999/vfs/${BACKEND_NAME}.git || exit $?
 cd $BACKEND_NAME || exit $?
 git checkout $BACKEND_BRANCH || exit $?
-export BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
 git checkout -b ${BACKEND_UPDATE_BRANCH} || exit $?
-curl -u $BAMBOO_USER $BUILD_URL/artifact/shared/gui-config.sh/gui-config.sh > gui-config.sh
-git add gui-config.sh
-git commit -m "${FRONTEND_TASK} GUI update" -m "${FRONTEND_CHANGELOG}"
-git push -u origin ${BACKEND_UPDATE_BRANCH}
+curl -u $BAMBOO_USER ${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME} > ${GUI_CONFIG_FILENAME} || exit $?
+git add ${GUI_CONFIG_FILENAME} || exit $?
+git commit -m "${FRONTEND_TASK} GUI update" -m "${FRONTEND_CHANGELOG}" || exit $?
+git push -u origin ${BACKEND_UPDATE_BRANCH} || exit $?
