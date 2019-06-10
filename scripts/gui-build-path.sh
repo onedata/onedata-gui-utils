@@ -25,10 +25,10 @@ case "$TYPE" in
     GUI_DIR="opw"
     ;;
   op-panel)
-    GUI_DIR="opp"
+    GUI_DIR="onp"
     ;;
   oz-panel)
-    GUI_DIR="ozp"
+    GUI_DIR="onp"
     ;;
   *)
     exit 3
