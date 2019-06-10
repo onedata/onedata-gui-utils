@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 # Usage: ./gui-release.sh <target_backend_branch> <source_frontend_branch> <service_name_1> <service_name_2>...
 
+# DEPRECATED
+# For new releases (19.02 and newer) use gui-release-19.06.sh
+
 # TODO:
 # - consider special mode for updating gui only for single version without need to merge into develop
 # - automatically read changelog entries and create changelog for commit message; shorter tasks names where possible
