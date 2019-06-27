@@ -15,7 +15,7 @@ BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
 
 cd /tmp || exit $?
 rm -rf $BACKEND_NAME || exit $?
-git clone ssh://git@git.plgrid.pl:7999/vfs/${BACKEND_NAME}.git || exit $?
+git clone ssh://git@git.onedata.org:7999/vfs/${BACKEND_NAME}.git || exit $?
 cd $BACKEND_NAME || exit $?
 git checkout $BACKEND_BRANCH || exit $?
 git checkout -b ${BACKEND_UPDATE_BRANCH} || exit $?
@@ -26,4 +26,4 @@ git add ${GUI_CONFIG_FILENAME} || exit $?
 git commit -m "${FRONTEND_TASK} GUI update" -m "${FRONTEND_CHANGELOG}" || exit $?
 git push -u origin ${BACKEND_UPDATE_BRANCH} || exit $?
 echo "-----"
-echo "https://git.plgrid.pl/projects/VFS/repos/${BACKEND_NAME}/compare/commits?targetBranch=refs%2Fheads%2F${BACKEND_BRANCH}&sourceBranch=refs%2Fheads%2F${BACKEND_UPDATE_BRANCH}"
+echo "https://git.onedata.org/projects/VFS/repos/${BACKEND_NAME}/compare/commits?targetBranch=refs%2Fheads%2F${BACKEND_BRANCH}&sourceBranch=refs%2Fheads%2F${BACKEND_UPDATE_BRANCH}"
