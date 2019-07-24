@@ -24,6 +24,6 @@ FRONTEND_IMAGE_TAG=`cat ${GUI_CONFIG_FILENAME} | grep 'IMAGE_TAG=' | sed -n  's/
 ${SCRIPT_DIR}/docker-tag-publish.py docker.onedata.org/${FRONTEND_NAME}:${FRONTEND_IMAGE_TAG} || exit $?
 git add ${GUI_CONFIG_FILENAME} || exit $?
 git commit -m "${FRONTEND_TASK} GUI update" -m "${FRONTEND_CHANGELOG}" || exit $?
-git push -u origin ${BACKEND_UPDATE_BRANCH} || exit $?
+git push --force -u origin ${BACKEND_UPDATE_BRANCH} || exit $?
 echo "-----"
 echo "https://git.onedata.org/projects/VFS/repos/${BACKEND_NAME}/compare/commits?targetBranch=refs%2Fheads%2F${BACKEND_BRANCH}&sourceBranch=refs%2Fheads%2F${BACKEND_UPDATE_BRANCH}"

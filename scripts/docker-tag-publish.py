@@ -13,7 +13,7 @@ try:
   tag_args = "{} {} {}".format(m.group(1), m.group(2), m.group(2))
   cmd = '{}/docker-tag.sh {}'.format(script_dir, tag_args)
   print(cmd)
-  os.system(cmd)
+  sys.exit(os.system(cmd))
 except IndexError:
   print('Usage: docker-tag-publish.py <full_image_name>')
   sys.exit(1)
