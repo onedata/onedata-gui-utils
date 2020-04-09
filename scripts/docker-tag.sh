@@ -8,4 +8,4 @@ docker pull docker.onedata.org/${IMG_NAME}:${IMG_VERSION} || exit $?
 docker tag docker.onedata.org/${IMG_NAME}:${IMG_VERSION} docker.onedata.org/${IMG_NAME}:${NEW_VERSION} || exit $?
 docker tag docker.onedata.org/${IMG_NAME}:${IMG_VERSION} onedata/${IMG_NAME}:${NEW_VERSION} || exit $?
 docker push docker.onedata.org/${IMG_NAME}:${NEW_VERSION} || exit $?
-docker push onedata/${IMG_NAME}:${NEW_VERSION} || exit $?
+docker push onedata/${IMG_NAME}:${NEW_VERSION}
