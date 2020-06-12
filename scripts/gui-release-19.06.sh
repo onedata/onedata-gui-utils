@@ -13,6 +13,13 @@ BACKEND_BRANCH=$4
 FRONTEND_TASK=$5
 FRONTEND_CHANGELOG=$6
 BAMBOO_USER=$7
+MSG_WITH_TASK=$8
+
+if [ "$MSG_WITH_TASK" == "false" ] || [ "$MSG_WITH_TASK" == "0" ]; then
+  COMMIT_BASE_MESSAGE="GUI update"
+else
+  COMMIT_BASE_MESSAGE="${FRONTEND_TASK} GUI update"
+fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 GUI_CONFIG_FILENAME="gui-image.conf"
@@ -57,7 +64,7 @@ fi
 
 # Commit gui-image.conf to backend project and give a link to create pull request
 git add ${GUI_CONFIG_FILENAME} || exit $?
-git commit -m "${FRONTEND_TASK} GUI update" -m "${FRONTEND_CHANGELOG}" || exit $?
+git commit -m "${COMMIT_BASE_MESSAGE}" -m "${FRONTEND_CHANGELOG}" || exit $?
 git push --force -u origin ${BACKEND_UPDATE_BRANCH} || exit $?
 echo "-----"
 echo "https://git.onedata.org/projects/VFS/repos/${BACKEND_NAME}/compare/commits?targetBranch=refs%2Fheads%2F${BACKEND_BRANCH}&sourceBranch=refs%2Fheads%2F${BACKEND_UPDATE_BRANCH}"
