@@ -25,15 +25,30 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 GUI_CONFIG_FILENAME="gui-image.conf"
 BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
 
+if [ -z $BAMBOO_PASSWORD ]; then
+  echo "Bamboo password:"
+  read -s BAMBOO_PASSWORD
+  export BAMBOO_PASSWORD=$BAMBOO_PASSWORD
+fi
+
 cd /tmp || exit $?
-rm -rf $BACKEND_NAME || exit $?
-git clone ssh://git@git.onedata.org:7999/vfs/${BACKEND_NAME}.git || exit $?
-cd $BACKEND_NAME || exit $?
-git checkout $BACKEND_BRANCH || exit $?
+if [ -d $BACKEND_NAME ]; then
+  cd $BACKEND_NAME || exit $?
+  git fetch || exit $?
+  git checkout $BACKEND_BRANCH || exit $?
+  git reset --hard origin/$BACKEND_BRANCH || exit $?
+else
+  rm -rf $BACKEND_NAME || exit $?
+  git clone ssh://git@git.onedata.org:7999/vfs/${BACKEND_NAME}.git || exit $?
+  cd $BACKEND_NAME || exit $?
+  git checkout $BACKEND_BRANCH || exit $?
+fi
+
+git branch -d ${BACKEND_UPDATE_BRANCH}
 git checkout -b ${BACKEND_UPDATE_BRANCH} || exit $?
 
 # Download gui-image.conf do backend project and get the image tag for further use
-curl -v -f -u $BAMBOO_USER ${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME} > ${GUI_CONFIG_FILENAME}
+curl -v -f -u $BAMBOO_USER:$BAMBOO_PASSWORD ${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME} > ${GUI_CONFIG_FILENAME}
 CURL_EXITCODE=$?
 if [ $CURL_EXITCODE -ne 0 ]
 then
