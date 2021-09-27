@@ -23,7 +23,7 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 GUI_CONFIG_FILENAME="gui-image.conf"
-BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
+BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update-develop"
 
 if [ -z $BAMBOO_PASSWORD ]; then
   echo "Bamboo password:"
@@ -31,7 +31,7 @@ if [ -z $BAMBOO_PASSWORD ]; then
   export BAMBOO_PASSWORD=$BAMBOO_PASSWORD
 fi
 
-cd /tmp || exit $?
+cd ~/tmp || exit $?
 if [ -d $BACKEND_NAME ]; then
   cd $BACKEND_NAME || exit $?
   git fetch || exit $?
@@ -48,7 +48,9 @@ git branch -d ${BACKEND_UPDATE_BRANCH}
 git checkout -b ${BACKEND_UPDATE_BRANCH} || exit $?
 
 # Download gui-image.conf do backend project and get the image tag for further use
-curl -v -f -u $BAMBOO_USER:$BAMBOO_PASSWORD ${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME} > ${GUI_CONFIG_FILENAME}
+GUI_CONFIG_URL=${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME}
+echo Fetching gui-image.conf from "${GUI_CONFIG_URL}"
+curl -v -f -u $BAMBOO_USER:$BAMBOO_PASSWORD ${GUI_CONFIG_URL} > ${GUI_CONFIG_FILENAME}
 CURL_EXITCODE=$?
 if [ $CURL_EXITCODE -ne 0 ]
 then
