@@ -1,0 +1,44 @@
+# dependencies
+/node_modules
+/bower_components
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try
+
+# test results
+**/test-results.xml
+
+# compilation and build output
+/dist
+/src/dist
+/tmp
+/src/tmp
+/rel
+gui_static.tar.gz
+gui_static
+
+# docker image artefact
+docker-build-list.json
+docker-build-report.txt
+gui-image.conf
+
+# OSX
+.DS_Store
+._*
+
+# Visual Studio Code
+.vscodeignore
+.vscode/
+jsconfig.json
+typings/
+
+# misc
+**/.sass-cache
+**/connect.lock
+**/coverage/*
+**/libpeerconnection.log
+**/npm-debug.log*
+**/yarn-error.log
+**/testem.log
