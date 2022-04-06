@@ -8,6 +8,7 @@ module.exports = {
   },
   plugins: [
     'ember',
+    'promise',
   ],
   extends: [
     'eslint:recommended',
@@ -18,9 +19,6 @@ module.exports = {
     es6: true,
     jquery: true,
   },
-  plugins: [
-    'promise',
-  ],
   rules: {
     'no-console': 0,
     'dot-location': [
@@ -37,7 +35,7 @@ module.exports = {
       'single',
       {
         avoidEscape: true,
-      }
+      },
     ],
     'quote-props': [
       1,
@@ -68,9 +66,9 @@ module.exports = {
     'prefer-const': [
       1,
       {
-        'destructuring': 'all',
-        'ignoreReadBeforeAssign': true
-      }
+        destructuring: 'all',
+        ignoreReadBeforeAssign: true,
+      },
     ],
     'no-var': 1,
     'one-var': [
@@ -83,20 +81,19 @@ module.exports = {
     'max-len': [
       1,
       {
-        'code': 90,
-        'tabWidth': 2,
-        'ignoreStrings': false,
-        'ignoreComments': true,
-        'ignoreTrailingComments': false,
-        'ignoreUrls': true,
-        'ignoreTemplateLiterals': true,
-        'ignoreRegExpLiterals': true,
-        'ignorePattern': '^import|.*[\'"`]\\)?,?;?|\s*it$',
-      }
+        code: 90,
+        tabWidth: 2,
+        ignoreStrings: false,
+        ignoreComments: true,
+        ignoreTrailingComments: false,
+        ignoreUrls: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+        ignorePattern: '^import|.*[\'"`]\\)?,?;?|\\s*it$',
+      },
     ],
     'promise/always-return': 'off', // default: error
     'promise/no-return-wrap': 'error',
-    'promise/param-names': 'error',
     'promise/catch-or-return': 'off', // default: error
     'promise/no-native': 'error',
     'promise/no-nesting': 'off', // default: warn
