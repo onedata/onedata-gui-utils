@@ -61,7 +61,7 @@ module.exports = {
         requireParamDescription: false,
         requireReturnDescription: false,
         requireReturn: false,
-      },
+      }
     ],
     'prefer-const': [
       1,
