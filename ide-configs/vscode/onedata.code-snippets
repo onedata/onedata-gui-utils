@@ -6,7 +6,6 @@
       "/**",
       " * $1 ",
       " *",
-      " * @module $2",
       " * @author Jakub Liput",
       " * @copyright (C) 2022 ACK CYFRONET AGH",
       " * @license This software is released under the MIT license cited in 'LICENSE.txt'.",
@@ -41,14 +40,14 @@
     "scope": "javascript",
     "prefix": "ember-lgs",
     "body": [
-      "let $1 = this.get('$1');"
+      "const $1 = this.get('$1');"
     ]
   },
   "Ember: get multiple properties to variables": {
     "scope": "javascript",
     "prefix": "ember-lgm",
     "body": [
-      "let {",
+      "const {",
       "  $1  ",
       "} = this.getProperties(",
       "   '$1'",
