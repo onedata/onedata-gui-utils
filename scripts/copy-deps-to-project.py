@@ -17,15 +17,16 @@ import os
 import collections
 import re
 
-ADDON_DIR = os.path.dirname(os.path.realpath(__file__))
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+ADDON_DIR = os.path.join(SCRIPT_DIR, '../../')
 
 def get_addon_dev_deps():
-    addon_package_path = os.path.join(ADDON_DIR, '../package.json')
+    addon_package_path = os.path.join(ADDON_DIR, 'package.json')
     with open(addon_package_path) as addon_package_file:
         return json.load(addon_package_file)['devDependencies']
 
 def replace_npm_versions():
-    project_package_path = os.path.join(ADDON_DIR, '../../../package.json')
+    project_package_path = os.path.join(ADDON_DIR, '../../package.json')
     with open(project_package_path, 'r+') as project_package_file:
         project_package = json.load(project_package_file, object_pairs_hook=collections.OrderedDict)
         project_dev_deps = project_package['devDependencies']
