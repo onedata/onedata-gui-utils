@@ -4,10 +4,10 @@ module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 2019,
-    sourceType: 'module',
   },
   plugins: [
     'ember',
+    'jsdoc',
     'promise',
   ],
   extends: [
@@ -55,14 +55,6 @@ module.exports = {
       'fetch',
       'parent',
     ],
-    'valid-jsdoc': [
-      1,
-      {
-        requireParamDescription: false,
-        requireReturnDescription: false,
-        requireReturn: false,
-      }
-    ],
     'prefer-const': [
       1,
       {
@@ -106,5 +98,7 @@ module.exports = {
     'ember/no-observers': 'off',
     'ember/no-side-effects': 'off',
     'ember/no-restricted-resolver-tests': 'off',
+    // eslint-plugin-jsdoc
+    'jsdoc/require-returns': 1,
   },
 };
