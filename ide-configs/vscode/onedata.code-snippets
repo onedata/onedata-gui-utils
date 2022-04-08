@@ -12,43 +12,42 @@
       " */"
     ]
   },
-  "Ember: set multiple": {
+  "Ember: this set": {
     "scope": "javascript",
-    "prefix": "ember-sm",
+    "prefix": "ember-ts",
+    "body": [
+      "this.set('$1')"
+    ]
+  },
+  "Ember: this set properties": {
+    "scope": "javascript",
+    "prefix": "ember-tsp",
     "body": [
       "this.setPropeties({",
-      "  $1: $2,",
-      "  $3",
+      "  $1",
       "});"
     ]
   },
-  "Ember: set": {
+  "Ember: this get": {
     "scope": "javascript",
-    "prefix": "ember-set",
+    "prefix": "ember-tg",
     "body": [
       "this.get('$1')"
     ]
   },
-  "Ember: get": {
+  "Ember: this get property to const": {
     "scope": "javascript",
-    "prefix": "ember-get",
-    "body": [
-      "this.get('$1')"
-    ]
-  },
-  "Ember: get single property to variable": {
-    "scope": "javascript",
-    "prefix": "ember-lgs",
+    "prefix": "ember-tgc",
     "body": [
       "const $1 = this.get('$1');"
     ]
   },
-  "Ember: get multiple properties to variables": {
+  "Ember: thi get properties to const": {
     "scope": "javascript",
-    "prefix": "ember-lgm",
+    "prefix": "ember-tgpc",
     "body": [
       "const {",
-      "  $1  ",
+      "  $1",
       "} = this.getProperties(",
       "   '$1'",
       ");"
