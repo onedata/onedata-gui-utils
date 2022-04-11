@@ -53,6 +53,7 @@ module.exports = {
       'name',
       'blur',
       'fetch',
+      'find',
       'parent',
     ],
     'prefer-const': [
