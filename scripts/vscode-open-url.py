@@ -13,4 +13,4 @@ file_url = ":".join(url.split(":")[0:-seg_count])
 local_file_path = '/tmp/' + file_name
 
 os.system('wget --no-check-certificate ' + file_url + ' -O ' + local_file_path)
-os.system('open vscode://file/' + local_file_path + ':' + lines)
+os.system('xdg-open vscode://file/' + local_file_path + ':' + lines)

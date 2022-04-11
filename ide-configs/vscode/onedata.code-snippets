@@ -1,0 +1,56 @@
+{
+  "Onedata: license header": {
+    "scope": "javascript",
+    "prefix": "one-head",
+    "body": [
+      "/**",
+      " * $1 ",
+      " *",
+      " * @author Jakub Liput",
+      " * @copyright (C) 2022 ACK CYFRONET AGH",
+      " * @license This software is released under the MIT license cited in 'LICENSE.txt'.",
+      " */"
+    ]
+  },
+  "Ember: this set": {
+    "scope": "javascript",
+    "prefix": "ember-ts",
+    "body": [
+      "this.set('$1')"
+    ]
+  },
+  "Ember: this set properties": {
+    "scope": "javascript",
+    "prefix": "ember-tsp",
+    "body": [
+      "this.setPropeties({",
+      "  $1",
+      "});"
+    ]
+  },
+  "Ember: this get": {
+    "scope": "javascript",
+    "prefix": "ember-tg",
+    "body": [
+      "this.get('$1')"
+    ]
+  },
+  "Ember: this get property to const": {
+    "scope": "javascript",
+    "prefix": "ember-tgc",
+    "body": [
+      "const $1 = this.get('$1');"
+    ]
+  },
+  "Ember: thi get properties to const": {
+    "scope": "javascript",
+    "prefix": "ember-tgpc",
+    "body": [
+      "const {",
+      "  $1",
+      "} = this.getProperties(",
+      "   '$1'",
+      ");"
+    ]
+  }
+}
