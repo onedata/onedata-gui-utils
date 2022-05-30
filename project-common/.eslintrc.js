@@ -26,10 +26,13 @@ module.exports = {
       'property',
     ],
     'eol-last': 0,
-    'comma-dangle': [
-      1,
-      'always-multiline',
-    ],
+    'comma-dangle': ['warn', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'ignore',
+      exports: 'ignore',
+      functions: 'ignore',
+    }],
     'quotes': [
       1,
       'single',
@@ -85,6 +88,12 @@ module.exports = {
         ignorePattern: '^import|.*[\'"`]\\)?,?;?|\\s*it$',
       },
     ],
+
+    // disable some recommended rules
+    'no-useless-catch': 'off',
+    'no-prototype-builtins': 'off',
+
+    // promise
     'promise/always-return': 'off', // default: error
     'promise/no-return-wrap': 'error',
     'promise/catch-or-return': 'off', // default: error
@@ -118,6 +127,7 @@ module.exports = {
     'ember/no-empty-glimmer-component-classes': 'off',
     'ember/no-get-with-default': 'off',
     'ember/no-get': 'off',
+    'ember/no-global-jquery': 'off',
     'ember/no-incorrect-calls-with-inline-anonymous-functions': 'off',
     'ember/no-incorrect-computed-macros': 'off',
     'ember/no-invalid-debug-function-arguments': 'off',
