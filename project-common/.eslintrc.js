@@ -19,6 +19,11 @@ module.exports = {
     es6: true,
     jquery: true,
   },
+  ignorePatterns: [
+    '!.eslintrc.js',
+    'public/assets/**',
+    'vendor/**',
+  ],
   rules: {
     'no-console': 0,
     'dot-location': [
