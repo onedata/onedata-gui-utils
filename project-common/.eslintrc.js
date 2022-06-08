@@ -23,6 +23,11 @@ module.exports = {
     '!.eslintrc.js',
     'public/assets/**',
     'vendor/**',
+    // lint-all script should not check submodules - do it manually
+    // currently (as of June 2022) ESLint plugin for VSCode does not respect this setting
+    // in submodules, which is what we want
+    'lib/onedata-gui-common',
+    'lib/onedata-gui-websocket-client',
   ],
   rules: {
     'no-console': 0,
