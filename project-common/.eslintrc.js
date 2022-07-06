@@ -3,7 +3,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2021,
   },
   plugins: [
     'ember',
@@ -19,6 +19,16 @@ module.exports = {
     es6: true,
     jquery: true,
   },
+  ignorePatterns: [
+    '!.eslintrc.js',
+    'public/assets/**',
+    'vendor/**',
+    // lint-all script should not check submodules - do it manually
+    // currently (as of June 2022) ESLint plugin for VSCode does not respect this setting
+    // in submodules, which is what we want
+    'lib/onedata-gui-common',
+    'lib/onedata-gui-websocket-client',
+  ],
   rules: {
     'no-console': 0,
     'dot-location': [
@@ -26,10 +36,13 @@ module.exports = {
       'property',
     ],
     'eol-last': 0,
-    'comma-dangle': [
-      1,
-      'always-multiline',
-    ],
+    'comma-dangle': ['warn', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'ignore',
+      exports: 'ignore',
+      functions: 'ignore',
+    }],
     'quotes': [
       1,
       'single',
@@ -53,6 +66,7 @@ module.exports = {
       'name',
       'blur',
       'fetch',
+      'find',
       'parent',
     ],
     'prefer-const': [
@@ -84,6 +98,12 @@ module.exports = {
         ignorePattern: '^import|.*[\'"`]\\)?,?;?|\\s*it$',
       },
     ],
+
+    // disable some recommended rules
+    'no-useless-catch': 'off',
+    'no-prototype-builtins': 'off',
+
+    // promise
     'promise/always-return': 'off', // default: error
     'promise/no-return-wrap': 'error',
     'promise/catch-or-return': 'off', // default: error
@@ -94,11 +114,60 @@ module.exports = {
     'promise/avoid-new': 'off', // default: warn
     'promise/no-return-in-finally': 'warn',
     'promise/param-names': 'off', // default: error
+
+    // eslint-plugin-jsdoc
+    'jsdoc/require-returns': 1,
+
     // disable some default eslint-plugin-ember rules
     'ember/no-observers': 'off',
     'ember/no-side-effects': 'off',
     'ember/no-restricted-resolver-tests': 'off',
-    // eslint-plugin-jsdoc
-    'jsdoc/require-returns': 1,
+    'ember/classic-decorator-hooks': 'off',
+    'ember/classic-decorator-no-classic-methods': 'off',
+    'ember/no-actions-hash': 'off',
+    'ember/no-arrow-function-computed-properties': 'off',
+    'ember/no-assignment-of-untracked-properties-used-in-tracking-contexts': 'off',
+    'ember/no-classic-classes': 'off',
+    'ember/no-classic-components': 'off',
+    'ember/no-component-lifecycle-hooks': 'off',
+    'ember/no-computed-properties-in-native-classes': 'off',
+    'ember/no-controller-access-in-routes': 'off',
+    'ember/no-deeply-nested-dependent-keys-with-each': 'off',
+    'ember/no-ember-super-in-es-classes': 'off',
+    'ember/no-empty-glimmer-component-classes': 'off',
+    'ember/no-get-with-default': 'off',
+    'ember/no-get': 'off',
+    'ember/no-global-jquery': 'off',
+    'ember/no-incorrect-calls-with-inline-anonymous-functions': 'off',
+    'ember/no-incorrect-computed-macros': 'off',
+    'ember/no-invalid-debug-function-arguments': 'off',
+    'ember/no-invalid-dependent-keys': 'off',
+    'ember/no-invalid-test-waiters': 'off',
+    'ember/no-jquery': 'off',
+    'ember/no-legacy-test-waiters': 'off',
+    'ember/no-mixins': 'off',
+    'ember/no-new-mixins': 'off',
+    'ember/no-noop-setup-on-error-in-before': 'off',
+    'ember/no-pause-test': 'off',
+    'ember/no-private-routing-service': 'off',
+    'ember/no-settled-after-test-helper': 'off',
+    'ember/no-shadow-route-definition': 'off',
+    'ember/no-string-prototype-extensions': 'off',
+    'ember/no-test-and-then': 'off',
+    'ember/no-test-import-export': 'off',
+    'ember/no-test-module-for': 'off',
+    'ember/no-test-support-import': 'off',
+    'ember/no-test-this-render': 'off',
+    'ember/no-try-invoke': 'off',
+    'ember/no-unnecessary-route-path-option': 'off',
+    'ember/no-volatile-computed-properties': 'off',
+    'ember/prefer-ember-test-helpers': 'off',
+    'ember/require-computed-macros': 'off',
+    'ember/require-computed-property-dependencies': 'off',
+    'ember/require-return-from-computed': 'off',
+    'ember/require-super-in-lifecycle-hooks': 'off',
+    'ember/require-tagless-components': 'off',
+    'ember/require-valid-css-selector-in-test-helpers': 'off',
+    'ember/use-ember-data-rfc-395-imports': 'off',
   },
 };

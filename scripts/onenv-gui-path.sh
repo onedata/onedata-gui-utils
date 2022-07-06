@@ -1,4 +1,5 @@
 #!/bin/bash
+# OBSOLETE, use gui-build-path.sh
 
 # one of: onezone, oneprovider-krakow
 [ -z ${NODE_PREFIX+x} ] && NODE_PREFIX=onezone
