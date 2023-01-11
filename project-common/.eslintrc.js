@@ -39,7 +39,7 @@ module.exports = {
     'comma-dangle': ['warn', {
       arrays: 'always-multiline',
       objects: 'always-multiline',
-      imports: 'ignore',
+      imports: 'always-multiline',
       exports: 'ignore',
       functions: 'ignore',
     }],
