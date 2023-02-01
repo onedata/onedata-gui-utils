@@ -40,7 +40,7 @@ module.exports = {
     'comma-dangle': ['warn', {
       arrays: 'always-multiline',
       objects: 'always-multiline',
-      imports: 'ignore',
+      imports: 'always-multiline',
       exports: 'ignore',
       functions: 'ignore',
     }],
@@ -164,7 +164,6 @@ module.exports = {
     'ember/no-private-routing-service': 'off',
     'ember/no-settled-after-test-helper': 'off',
     'ember/no-shadow-route-definition': 'off',
-    'ember/no-string-prototype-extensions': 'off',
     'ember/no-test-and-then': 'off',
     'ember/no-test-import-export': 'off',
     'ember/no-test-module-for': 'off',
