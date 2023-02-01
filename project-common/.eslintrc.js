@@ -9,6 +9,7 @@ module.exports = {
     'ember',
     'jsdoc',
     'promise',
+    'regex',
   ],
   extends: [
     'eslint:recommended',
@@ -97,6 +98,17 @@ module.exports = {
         ignoreRegExpLiterals: true,
         ignorePattern: '^import|.*[\'"`]\\)?,?;?|\\s*it$',
       },
+    ],
+
+    'regex/invalid': [
+      'error', [{
+        message: 'Incorrect usage of hyphen in user-readable text.',
+        regex: ' - ',
+        replacement: ' — ',
+        files: {
+          inspect: '.*/locales/en/.*',
+        },
+      }],
     ],
 
     // disable some recommended rules
