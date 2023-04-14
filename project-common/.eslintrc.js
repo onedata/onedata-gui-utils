@@ -64,6 +64,12 @@ module.exports = {
     'semi': 2,
     'no-restricted-globals': [
       2,
+      'window',
+      'document',
+      'location',
+      'navigator',
+      'localStorage',
+      'sessionStorage',
       'name',
       'blur',
       'fetch',
