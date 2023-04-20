@@ -1,5 +1,11 @@
 /* eslint-env node */
 
+const path = require('path');
+
+// Websocket client does not have `globals` util included
+const enableNoRestrictedGlobals =
+  path.basename(process.cwd()) !== 'onedata-gui-websocket-client';
+
 module.exports = {
   root: true,
   parserOptions: {
@@ -62,14 +68,20 @@ module.exports = {
       },
     ],
     'semi': 2,
-    'no-restricted-globals': [
+    'no-restricted-globals': enableNoRestrictedGlobals ? [
       2,
+      'window',
+      'document',
+      'location',
+      'navigator',
+      'localStorage',
+      'sessionStorage',
       'name',
       'blur',
       'fetch',
       'find',
       'parent',
-    ],
+    ] : 0,
     'prefer-const': [
       1,
       {
