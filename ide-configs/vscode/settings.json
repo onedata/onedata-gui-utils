@@ -26,5 +26,10 @@
     "oneprovider-gui": "",
     "onezone-gui": "",
     "onepanel-gui": ""
-  }
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }
