@@ -8,8 +8,15 @@ const enableNoRestrictedGlobals =
 
 module.exports = {
   root: true,
+  parser: '@babel/eslint-parser',
   parserOptions: {
+    requireConfigFile: false,
     ecmaVersion: 2021,
+    babelOptions: {
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+      ],
+    },
   },
   plugins: [
     'ember',
