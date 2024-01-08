@@ -8,7 +8,7 @@ const enableNoRestrictedGlobals =
 
 module.exports = {
   root: true,
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     requireConfigFile: false,
     babelOptions: {
@@ -199,4 +199,16 @@ module.exports = {
     'ember/require-valid-css-selector-in-test-helpers': 'off',
     'ember/use-ember-data-rfc-395-imports': 'off',
   },
+  overrides: [{
+    // TypeScript files
+    files: ['**/*.ts'],
+    plugins: ['@typescript-eslint'],
+    extends: ['plugin:@typescript-eslint/recommended'],
+    rules: {
+      // TypeScript linter has it's own rule for semicolons - `@typescript-eslint/semi`.
+      // Regular `semi` rule does not understand some of TypeScript semantics.
+      'semi': 0,
+      '@typescript-eslint/semi': ['error', 'always'],
+    },
+  }],
 };
