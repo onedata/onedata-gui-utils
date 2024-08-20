@@ -14,6 +14,7 @@ module.exports = {
   browser_args: {
     Chrome: [
       '--no-sandbox',
+      '--disable-search-engine-choice-screen',
     ],
   },
 };
