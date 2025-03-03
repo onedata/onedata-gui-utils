@@ -35,7 +35,7 @@
 const fs = require('fs');
 
 class Formatter {
-  static lineFormatRegexp = /^(\s+)(.*)<([A-Z][\w:]+|\w+\.\w+)(.*?)(\/?>)(.*)$/;
+  static lineFormatRegexp = /^(\s*)(.*)<([A-Z][\w:]+|\w+\.\w+)(.*?)(\/?>)(.*)$/;
   static argsRegexp = /(@\w+={{.*?}}|\w+={{.*?}}|@\w+=".*?"|\w+=".*?"|as \|.*?\|)/g;
 
   /**
