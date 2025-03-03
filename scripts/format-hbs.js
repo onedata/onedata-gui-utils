@@ -30,12 +30,12 @@
  */
 
 /* eslint-env node */
-'use strict'
+'use strict';
 
 const fs = require('fs');
 
 class Formatter {
-  static lineFormatRegexp = /^(\s+)(.*)\<([A-Z][\w:]+|[\w+\.\w+]+)(.*?)(\/?\>)(.*)$/;
+  static lineFormatRegexp = /^(\s+)(.*)<([A-Z][\w:]+|\w+\.\w+)(.*?)(\/?>)(.*)$/;
   static argsRegexp = /(@\w+={{.*?}}|\w+={{.*?}}|@\w+=".*?"|\w+=".*?"|as \|.*?\|)/g;
 
   /**
@@ -54,12 +54,12 @@ class Formatter {
    */
   destructureArgs(componentArgsString) {
     const regexpIterator = componentArgsString.matchAll(Formatter.argsRegexp);
-    return [...regexpIterator].map(([text]) => text)
+    return [...regexpIterator].map(([text]) => text);
   }
   destructureLine(line) {
     const match = line.match(Formatter.lineFormatRegexp);
     const indent = match[1];
-    const before = match[2]
+    const before = match[2];
     const componentName = match[3];
     const componentArgsString = match[4];
     const componentArgs = this.destructureArgs(componentArgsString);
@@ -111,12 +111,12 @@ class Formatter {
   convertDocument() {
     const originalContent = fs.readFileSync(this.path).toString();
     const newContent = this.convertDocumentString(originalContent);
-    fs.writeFileSync(this.path, newContent)
+    fs.writeFileSync(this.path, newContent);
   }
 }
 
 [
   // put file paths here (relative to working dir)
 ].forEach(path => {
-  new Formatter(path).convertDocument()
+  new Formatter(path).convertDocument();
 });
