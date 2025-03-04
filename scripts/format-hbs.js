@@ -100,7 +100,7 @@ class Formatter {
     let resultContent = '';
     const lastLineNum = originalLines.length - 1;
     for (const [num, line] of originalLines.entries()) {
-      const effLine = line.replaceAll('@class=', 'class=')
+      const effLine = line.replaceAll('@class=', 'class=');
       resultContent += this.shouldBeFormatted(line) ? this.formatLine(effLine) : effLine;
       if (num !== lastLineNum) {
         resultContent += '\n';
