@@ -75,6 +75,7 @@ class Formatter {
     };
   }
   formatLine(line) {
+    const effLine = line.replaceAll('@class=', 'class=')
     const {
       indent,
       before,
@@ -82,12 +83,11 @@ class Formatter {
       componentArgs,
       closingTag,
       after,
-    } = this.destructureLine(line);
+    } = this.destructureLine(effLine);
     const argIndent = indent + '  ';
     let result = `${indent}${before}<${componentName}\n`;
     for (const componentArg of componentArgs) {
-      const effComponentArg = componentArg.replace('@class=', 'class=');
-      result += `${argIndent}${effComponentArg}\n`;
+      result += `${argIndent}${componentArg}\n`;
     }
     result += `${indent}${closingTag}${after}`;
     return result;
