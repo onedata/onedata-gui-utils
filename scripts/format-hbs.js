@@ -100,7 +100,12 @@ class Formatter {
     let resultContent = '';
     const lastLineNum = originalLines.length - 1;
     for (const [num, line] of originalLines.entries()) {
-      const effLine = line.replaceAll('@class=', 'class=');
+      let effLine;
+      if (line.includes('{{!-- formatter ignore --}}')) {
+        effLine = line;
+      } else {
+        effLine = line.replaceAll('@class=', 'class=');
+      }
       resultContent += this.shouldBeFormatted(line) ? this.formatLine(effLine) : effLine;
       if (num !== lastLineNum) {
         resultContent += '\n';
@@ -117,6 +122,7 @@ class Formatter {
 
 [
   // put file paths here (relative to working dir)
+  'src/lib/onedata-gui-common/tests/dummy/app/templates/components/demo-components/one-clipboard-line.hbs',
 ].forEach(path => {
   new Formatter(path).convertDocument();
 });
