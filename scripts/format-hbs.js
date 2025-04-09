@@ -120,9 +120,13 @@ class Formatter {
   }
 }
 
-[
-  // put file paths here (relative to working dir)
-  'src/lib/onedata-gui-common/tests/dummy/app/templates/components/demo-components/one-clipboard-line.hbs',
-].forEach(path => {
+const files = process.argv.slice(2);
+
+if (!files.length) {
+  console.log('no files specified');
+  process.exit(1);
+}
+
+files.forEach(path => {
   new Formatter(path).convertDocument();
 });
