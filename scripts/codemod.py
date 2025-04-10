@@ -62,9 +62,11 @@ def main():
 def parse_cli_args(argv):
     parser = argparse.ArgumentParser(
         prog="codemod.py",
-        description="""Runs selected codemods on specified files. Example usage from
-                       onezone-gui root in ZSH shell:
-                       ./onedata-gui-utils/scripts/codemod.py --converters=angle_brackets,format_hbs src/app/**/*.hbs
+        description="""Runs selected codemods on specified files. Typically you should
+                       launch `ember s` of application to use codemods. Example usage from
+                       onezone-gui root directory in ZSH shell:
+                       ./onedata-gui-utils/scripts/codemod.py
+                       --converters=angle_brackets,format_hbs src/app/**/*.hbs
                     """,
     )
     parser.add_argument("files", nargs="+", help="File path(s).")
