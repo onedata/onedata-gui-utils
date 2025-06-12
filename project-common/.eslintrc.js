@@ -209,6 +209,8 @@ module.exports = {
       // Regular `semi` rule does not understand some of TypeScript semantics.
       'semi': 0,
       '@typescript-eslint/semi': ['error', 'always'],
+      // Documenting return types in TypeScript is redundant.
+      'jsdoc/require-returns': 0,
     },
   }],
 };
