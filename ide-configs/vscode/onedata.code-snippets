@@ -7,10 +7,15 @@
       " * $1 ",
       " *",
       " * @author Jakub Liput",
-      " * @copyright (C) 2024 ACK CYFRONET AGH",
+      " * @copyright (C) 2025 Onedata (onedata.org)",
       " * @license This software is released under the MIT license cited in 'LICENSE.txt'.",
       " */"
     ]
+  },
+  "Onedata: copyright only": {
+    "scope": "javascript",
+    "prefix": "copyright",
+    "body": "@copyright (C) 2025 Onedata (onedata.org)"
   },
   "Ember: this set": {
     "scope": "javascript",
