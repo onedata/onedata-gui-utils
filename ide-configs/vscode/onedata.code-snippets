@@ -17,6 +17,21 @@
     "prefix": "copyright",
     "body": "@copyright (C) 2025 Onedata (onedata.org)"
   },
+  "Onedata: promiseObject from async IIFE": {
+      "scope": "javascript",
+      "prefix": "proaiife",
+      "body": [
+        "const promise = (async () => {",
+        "  $1",
+        "})();",
+        "return promiseObject(promise);"
+      ]
+  },
+  "async IIFE": {
+    "scope": "javascript",
+    "prefix": "aiife",
+    "body": ["(async () => {", "  $1", "})();"]
+  },
   "Ember: this set": {
     "scope": "javascript",
     "prefix": "ember-ts",
