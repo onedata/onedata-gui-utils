@@ -7,9 +7,33 @@
       " * $1 ",
       " *",
       " * @author Jakub Liput",
-      " * @copyright (C) 2024 ACK CYFRONET AGH",
+      " * @copyright (C) 2025 Onedata (onedata.org)",
       " * @license This software is released under the MIT license cited in 'LICENSE.txt'.",
       " */"
+    ]
+  },
+  "Onedata: copyright only": {
+    "scope": "javascript",
+    "prefix": "copyright",
+    "body": "@copyright (C) 2025 Onedata (onedata.org)"
+  },
+  "Onedata: promiseObject from async IIFE": {
+      "scope": "javascript",
+      "prefix": "proaiife",
+      "body": [
+        "const promise = (async () => {",
+        "  $1",
+        "})();",
+        "return promiseObject(promise);"
+      ]
+  },
+  "async IIFE": {
+    "scope": "javascript",
+    "prefix": "aiife",
+    "body": [
+      "(async () => {",
+      "  $1",
+      "})();"
     ]
   },
   "Ember: this set": {
