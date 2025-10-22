@@ -30,7 +30,11 @@
   "async IIFE": {
     "scope": "javascript",
     "prefix": "aiife",
-    "body": ["(async () => {", "  $1", "})();"]
+    "body": [
+      "(async () => {",
+      "  $1",
+      "})();"
+    ]
   },
   "Ember: this set": {
     "scope": "javascript",
