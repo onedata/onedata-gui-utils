@@ -18,14 +18,14 @@
     "body": "@copyright (C) 2026 Onedata (onedata.org)"
   },
   "Onedata: promiseObject from async IIFE": {
-      "scope": "javascript",
-      "prefix": "proaiife",
-      "body": [
-        "const promise = (async () => {",
-        "  $1",
-        "})();",
-        "return promiseObject(promise);"
-      ]
+    "scope": "javascript",
+    "prefix": "proaiife",
+    "body": [
+      "const promise = (async () => {",
+      "  $1",
+      "})();",
+      "return promiseObject(promise);"
+    ]
   },
   "async IIFE": {
     "scope": "javascript",
@@ -66,7 +66,7 @@
       "const $1 = this.get('$1');"
     ]
   },
-  "Ember: thi get properties to const": {
+  "Ember: this get properties to const": {
     "scope": "javascript",
     "prefix": "ember-tgpc",
     "body": [
@@ -75,6 +75,25 @@
       "} = this.getProperties(",
       "   '$1'",
       ");"
+    ]
+  },
+  "Ember: component signature": {
+    "scope": "javascript",
+    "prefix": "ember-sig",
+    "body": [
+      "/**",
+      " * @typedef {Object} $1Signature",
+      " * @property {HTMLDivElement} Element",
+      " * @property {$1Args} Args",
+      " */",
+      "",
+      "/**",
+      " * @typedef {Object} $1Args",
+      " */",
+      "",
+      "/**",
+      " * @extends {Component<$1Signature>}",
+      " */",
     ]
   }
 }
