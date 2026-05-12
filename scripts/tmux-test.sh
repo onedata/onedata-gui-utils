@@ -12,8 +12,8 @@ else
   app_dir="src"
 fi
 
-tmux new-session -d -s dev
-tmux send-keys -t dev "cd ${app_dir} && ember build --output-path=${test_dir} --environment=test --watch" C-m
+tmux new-session -d -s ${test_name}
+tmux send-keys -t ${test_name} "cd ${app_dir} && ember build --output-path=${test_dir} --environment=test --watch" C-m
 tmux split-window -h
-tmux send-keys -t dev "cd ${app_dir} && sleep 40 && ember t --server --test-port 0 --launch=Chromium --path=${test_dir} --filter='${filter}'" C-m
-tmux attach -t dev
+tmux send-keys -t ${test_name} "cd ${app_dir} && sleep 40 && ember t --server --test-port 0 --launch=Chromium --path=${test_dir} --filter='${filter}'" C-m
+tmux attach -t ${test_name}
