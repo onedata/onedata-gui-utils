@@ -27,6 +27,10 @@
   "[handlebars]": {
     "files.insertFinalNewline": false
   },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "seito-openfile.wordbound": "[\\s\\\"\\'\\>\\<#;?{}.(]",
   "seito-openfile.leadingPathMapping": {
     "oneprovider-gui": "",
