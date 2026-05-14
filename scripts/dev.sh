@@ -26,7 +26,7 @@ case "$COMMAND" in
     $SCRIPT_DIR/tmux-test.sh
     ;;
   *)
-    echo "Usage: $0 {serve [port]}"
+    echo "Usage: $0 {serve [port]|onenv|test}"
     exit 1
     ;;
 esac
