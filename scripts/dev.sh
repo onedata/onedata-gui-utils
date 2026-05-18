@@ -11,10 +11,12 @@ fi
 COMMAND="$1"
 ARGS="${@:2}"
 
+SERVE_DEFAULT_PORT=4200
+
 case "$COMMAND" in
   "serve")
     if [ -z "$ARGS" ]; then
-      ARGS=4200
+      ARGS=$SERVE_DEFAULT_PORT
     fi
     cd "$APP_DIR"
     ember s --port=${ARGS}
@@ -23,10 +25,13 @@ case "$COMMAND" in
     $SCRIPT_DIR/tmux-onenv.sh
     ;;
   "test")
-    $SCRIPT_DIR/tmux-test.sh
+    $SCRIPT_DIR/tmux-test.sh $ARGS
     ;;
   *)
-    echo "Usage: $0 {serve [port]|onenv|test}"
+    echo "Usage:"
+    echo "  $0 serve [port=$SERVE_DEFAULT_PORT]"
+    echo "  $0 onenv"
+    echo "  $0 test [filter]"
     exit 1
     ;;
 esac
