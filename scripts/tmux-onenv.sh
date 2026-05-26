@@ -1,34 +1,40 @@
 #!/bin/bash
 
-filter=$1
-if [ "$filter" == "" ]; then
-  filter=".*"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+FILTER=$1
+if [ "$FILTER" == "" ]; then
+  FILTER=".*"
 fi
-gui_name=$(pwd | grep -Eo '[^/]+$')
+GUI_NAME=$(pwd | grep -Eo '[^/]+$')
 if [ -z "$(ls | grep src)" ]; then
-  app_dir="."
+  APP_DIR="."
 else
-  app_dir="src"
+  APP_DIR="src"
 fi
 
-case "$gui_name" in
+if [ "$BACKEND_SRC_ROOT" == "" ]; then
+  BACKEND_SRC_ROOT=~/Onedata/one-env-focal/src-dev
+fi
+
+case "$GUI_NAME" in
   onepanel-gui)
-    worker_name=oz-panel
+    WORKER_NAME=oz-panel
     ;;
   onezone-gui)
-    worker_name=oz-worker
+    WORKER_NAME=oz-worker
     ;;
   oneprovider-gui)
-    worker_name=op-worker
+    WORKER_NAME=op-worker
     ;;
   *)
-    echo "Not supported GUI: " $gui_name
+    echo "Not supported GUI: " $GUI_NAME
     exit 0
     ;;
 esac
 
-tmux new-session -d -s ${gui_name}
-tmux send-keys -t ${gui_name} "cd ${app_dir} && ember build --output-path=../rel --environment=development-backend --watch" C-m
+tmux new-session -d -s ${GUI_NAME}
+tmux send-keys -t ${GUI_NAME} "cd ${APP_DIR} && ember build --output-path=../rel --environment=development-backend --watch" C-m
 tmux split-window -h
-tmux send-keys -t ${gui_name} "~/Onedata/onedata-gui-utils/scripts/watch-copy-gui-to-pod.sh $worker_name ~/Onedata/one-env-focal/src-25.05" C-m
-tmux attach -t ${gui_name}
+tmux send-keys -t ${GUI_NAME} "${SCRIPT_DIR}/watch-copy-gui-to-pod.sh ${WORKER_NAME} ${BACKEND_SRC_ROOT}" C-m
+tmux attach -t ${GUI_NAME}
