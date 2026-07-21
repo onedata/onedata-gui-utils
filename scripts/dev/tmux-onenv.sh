@@ -29,12 +29,16 @@ case "$GUI_NAME" in
     ;;
   *)
     echo "Not supported GUI: " $GUI_NAME
-    exit 0
+    exit 1
     ;;
 esac
 
-tmux new-session -d -s ${GUI_NAME}
-tmux send-keys -t ${GUI_NAME} "cd ${APP_DIR} && ember build --output-path=../rel --environment=development-backend --watch" C-m
+TMUX_SESSION_NAME=${GUI_NAME}
+
+trap "tmux kill-session -t ${TMUX_SESSION_NAME}" EXIT
+
+tmux new-session -d -s ${TMUX_SESSION_NAME}
+tmux send-keys -t ${TMUX_SESSION_NAME} "cd ${APP_DIR} && ember build --output-path=../rel --environment=development-backend --watch" C-m
 tmux split-window -h
-tmux send-keys -t ${GUI_NAME} "${SCRIPT_DIR}/watch-copy-gui-to-pod.sh ${WORKER_NAME} ${BACKEND_SRC_ROOT}" C-m
-tmux attach -t ${GUI_NAME}
+tmux send-keys -t ${TMUX_SESSION_NAME} "${SCRIPT_DIR}/watch-copy-gui-to-pod.sh ${WORKER_NAME} ${BACKEND_SRC_ROOT}" C-m
+tmux attach -t ${TMUX_SESSION_NAME}

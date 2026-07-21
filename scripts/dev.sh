@@ -1,7 +1,16 @@
 #!/bin/bash
 set -e
 
+# Copyright 2026 Onedata (onedata.org)
+# Author: Jakub Liput
+#
+# Convinient command center for launching most commonly used developer operations:
+# - serve - starting the development server (ember s),
+# - onenv - live build and synchronizing static files with one-env deployment (side-by-side tmux terminal),
+# - test - running live build and tests (side-by-side tmux terminal).
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DEV_SCRIPTS_DIR=$SCRIPT_DIR/dev
 if [ -z "$(ls | grep src)" ]; then
   APP_DIR="."
 else
@@ -22,10 +31,10 @@ case "$COMMAND" in
     ember s --port=${ARGS}
     ;;
   "onenv")
-    $SCRIPT_DIR/tmux-onenv.sh
+    $DEV_SCRIPTS_DIR/tmux-onenv.sh
     ;;
   "test")
-    $SCRIPT_DIR/tmux-test.sh $ARGS
+    $DEV_SCRIPTS_DIR/tmux-test.sh $ARGS
     ;;
   *)
     echo "Usage:"
