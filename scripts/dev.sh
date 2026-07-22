@@ -39,7 +39,7 @@ case "$COMMAND" in
   *)
     echo "Usage:"
     echo "  $0 serve [port=$SERVE_DEFAULT_PORT]"
-    echo "  $0 onenv"
+    echo "  $0 onenv [backend-src-root-path]"
     echo "  $0 test [filter]"
     exit 1
     ;;

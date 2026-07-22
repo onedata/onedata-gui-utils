@@ -13,10 +13,6 @@ else
   APP_DIR="src"
 fi
 
-if [ "$BACKEND_SRC_ROOT" == "" ]; then
-  BACKEND_SRC_ROOT=~/Onedata/one-env-focal/src-dev
-fi
-
 case "$GUI_NAME" in
   onepanel-gui)
     WORKER_NAME=oz-panel
@@ -33,6 +29,16 @@ case "$GUI_NAME" in
     ;;
 esac
 
+
+if [ "$BACKEND_SRC_ROOT" == "" ]; then
+  BACKEND_SRC_ROOT=$1
+fi
+
+if [ "$BACKEND_SRC_ROOT" == "" ]; then
+  echo "Provide the path to the backend source root (the directory which has subdirectory with ${WORKER_NAME}) as an argument or set the BACKEND_SRC_ROOT environment variable."
+  exit 1
+fi
+
 TMUX_SESSION_NAME=${GUI_NAME}
 
 trap "tmux kill-session -t ${TMUX_SESSION_NAME}" EXIT
@@ -40,5 +46,5 @@ trap "tmux kill-session -t ${TMUX_SESSION_NAME}" EXIT
 tmux new-session -d -s ${TMUX_SESSION_NAME}
 tmux send-keys -t ${TMUX_SESSION_NAME} "cd ${APP_DIR} && ember build --output-path=../rel --environment=development-backend --watch" C-m
 tmux split-window -h
-tmux send-keys -t ${TMUX_SESSION_NAME} "${SCRIPT_DIR}/watch-copy-gui-to-pod.sh ${WORKER_NAME} ${BACKEND_SRC_ROOT}" C-m
+tmux send-keys -t ${TMUX_SESSION_NAME} "${SCRIPT_DIR}/../watch-copy-gui-to-pod.sh ${WORKER_NAME} ${BACKEND_SRC_ROOT}" C-m
 tmux attach -t ${TMUX_SESSION_NAME}
