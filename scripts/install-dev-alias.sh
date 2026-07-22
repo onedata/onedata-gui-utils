@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-ALIAS_LINE='alias dev="cd `git rev-parse --show-toplevel` && ./onedata-gui-utils/scripts/dev.sh"'
+GET_GIT_DIR_CMD='$(git rev-parse --show-toplevel)'
+ALIAS_LINE="alias dev='cd ${GET_GIT_DIR_CMD} && ./onedata-gui-utils/scripts/dev.sh'"
 
 detect_shell_rc() {
 	local shell_name
