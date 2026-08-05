@@ -1,5 +1,5 @@
 #!/bin/bash
-# ./gui-release-19.06.sh oz-worker onezone-gui https://bamboo.onedata.org/browse/VFS-OZG72-4 release/19.02.0-beta1 VFS-5476 "Refactoring of token/origin endpoints and unfied GUI URL" plgjliput
+# Example: ./gui-release-19.06.sh oz-worker onezone-gui https://bamboo.onedata.org/browse/VFS-OZG72-4 release/19.02.0-beta1 VFS-5476 "Refactoring of token/origin endpoints and unfied GUI URL" plgjliput
 
 function print_error {
   printf "\e[31mERROR: %s\e[0m\n" "$1" >&2
@@ -23,7 +23,10 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 GUI_CONFIG_FILENAME="gui-image.conf"
-BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update-develop"
+BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update"
+# BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update-develop"
+# BACKEND_UPDATE_BRANCH="feature/${FRONTEND_TASK}-gui-update-testing"
+
 
 if [ -z $BAMBOO_PASSWORD ]; then
   echo "Bamboo password:"
@@ -50,7 +53,7 @@ git checkout -b ${BACKEND_UPDATE_BRANCH} || exit $?
 # Download gui-image.conf do backend project and get the image tag for further use
 GUI_CONFIG_URL=${BUILD_URL}/artifact/shared/${GUI_CONFIG_FILENAME}/${GUI_CONFIG_FILENAME}
 echo Fetching gui-image.conf from "${GUI_CONFIG_URL}"
-curl -v -f -u $BAMBOO_USER:$BAMBOO_PASSWORD ${GUI_CONFIG_URL} > ${GUI_CONFIG_FILENAME}
+curl -f -u $BAMBOO_USER:$BAMBOO_PASSWORD ${GUI_CONFIG_URL} > ${GUI_CONFIG_FILENAME}
 CURL_EXITCODE=$?
 if [ $CURL_EXITCODE -ne 0 ]
 then
