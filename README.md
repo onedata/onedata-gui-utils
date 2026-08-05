@@ -12,9 +12,12 @@ cp -r onedata-gui-utils/ide-configs/vscode .vscode
 
 # Central Development Script
 
+**Prerequisites:** `tmux` (mulit-pane terminal) and `kubectl` (synchronizing files with
+onenv) installed and configured.
+
 There is a `scripts/dev.sh` script that can run few typical development scenarios using
 short command. To simplify the development, you can create an alias in your shell
-configuration file using `./onedata-gui-utils/scripts/install-dev-aliast.sh`.
+configuration file using `./onedata-gui-utils/scripts/install-dev-alias.sh`.
 
 ```shell
 alias dev="./onedata-gui-utils/scripts/dev.sh"
