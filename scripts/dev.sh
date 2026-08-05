@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Copyright 2026 Onedata (onedata.org)
+# Copyright (C) 2026 Onedata (onedata.org)
 # Author: Jakub Liput
 #
 # Convinient command center for launching most commonly used developer operations:
@@ -9,7 +9,7 @@ set -e
 # - onenv - live build and synchronizing static files with one-env deployment (side-by-side tmux terminal),
 # - test - running live build and tests (side-by-side tmux terminal).
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DEV_SCRIPTS_DIR=$SCRIPT_DIR/dev
 if [ -z "$(ls | grep src)" ]; then
   APP_DIR="."
