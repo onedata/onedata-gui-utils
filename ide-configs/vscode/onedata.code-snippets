@@ -12,6 +12,13 @@
       " */"
     ]
   },
+  "Onedata: import promiseObject": {
+    "scope": "javascript",
+    "prefix": "import promiseobject",
+    "body": [
+      "import { promiseObject } from 'onedata-gui-common/utils/ember/promise-object';"
+    ]
+  },
   "Onedata: copyright only": {
     "scope": "javascript",
     "prefix": "copyright",
