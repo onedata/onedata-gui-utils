@@ -34,7 +34,7 @@ if [ -z $BAMBOO_PASSWORD ]; then
   export BAMBOO_PASSWORD=$BAMBOO_PASSWORD
 fi
 
-cd ~/tmp || exit $?
+cd /tmp || exit $?
 if [ -d $BACKEND_NAME ]; then
   cd $BACKEND_NAME || exit $?
   git fetch || exit $?
