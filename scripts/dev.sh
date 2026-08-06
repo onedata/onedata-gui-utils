@@ -2,6 +2,7 @@
 set -e
 
 # Copyright (C) 2026 Onedata (onedata.org)
+# This software is released under the MIT license cited in 'LICENSE.txt'
 # Author: Jakub Liput
 #
 # Convinient command center for launching most commonly used developer operations:

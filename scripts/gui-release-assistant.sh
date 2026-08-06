@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Copyright (C) 2026 Onedata (onedata.org)
+# This software is released under the MIT license cited in 'LICENSE.txt'
 # Author: Jakub Liput
 #
 # A wrapper for gui-release script for releasing (updating image) multiple GUIs at once

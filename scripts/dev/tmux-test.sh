@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright (C) 2026 Onedata (onedata.org)
+# This software is released under the MIT license cited in 'LICENSE.txt'
+# Author: Jakub Liput
+
 FILTER=$1
 if [ "$FILTER" == "" ]; then
   FILTER=".*"

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Copyright (C) 2026 Onedata (onedata.org)
+# This software is released under the MIT license cited in 'LICENSE.txt'
 # Author: Jakub Liput
 #
 # This script copies the GUI static files to a pod. It takes two optional arguments:
