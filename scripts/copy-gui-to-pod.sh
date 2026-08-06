@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2026 Onedata (onedata.org)
+# Copyright (C) 2026 Onedata (onedata.org)
 # Author: Jakub Liput
 #
 # This script copies the GUI static files to a pod. It takes two optional arguments:
