@@ -1,5 +1,5 @@
 #!/bin/bash
-# Example: ./gui-release-19.06.sh oz-worker onezone-gui https://bamboo.onedata.org/browse/VFS-OZG72-4 release/19.02.0-beta1 VFS-5476 "Refactoring of token/origin endpoints and unfied GUI URL" plgjliput
+# Example: ./gui-release.sh oz-worker onezone-gui https://bamboo.onedata.org/browse/VFS-OZG72-4 release/19.02.0-beta1 VFS-5476 "Refactoring of token/origin endpoints and unfied GUI URL" plgjliput
 
 function print_error {
   printf "\e[31mERROR: %s\e[0m\n" "$1" >&2
