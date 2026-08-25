@@ -8,14 +8,14 @@ FILTER=$1
 if [ "$FILTER" == "" ]; then
   FILTER=".*"
 fi
-TEST_NAME=$(pwd | grep -Eo '[^/]+$')
-TEST_DIR=/tmp/ember-test-${TEST_NAME}
+GUI_NAME=$(pwd | grep -Eo '[^/]+$')
+TEST_DIR=/tmp/ember-test-${GUI_NAME}
 if [ -z "$(ls | grep src)" ]; then
   APP_DIR="."
 else
   APP_DIR="src"
 fi
-TMUX_SESSION_NAME=${TEST_NAME}
+TMUX_SESSION_NAME=${GUI_NAME}-${RANDOM}
 
 trap "tmux kill-session -t ${TMUX_SESSION_NAME}" EXIT
 
