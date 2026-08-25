@@ -4,7 +4,7 @@
 # This software is released under the MIT license cited in 'LICENSE.txt'
 # Author: Jakub Liput
 
-FILTER=$1
+FILTER=$@
 if [ "$FILTER" == "" ]; then
   FILTER=".*"
 fi
