@@ -43,7 +43,7 @@ if [ "$BACKEND_SRC_ROOT" == "" ]; then
   exit 1
 fi
 
-TMUX_SESSION_NAME=${GUI_NAME}
+TMUX_SESSION_NAME=${GUI_NAME}-${RANDOM}
 
 trap "tmux kill-session -t ${TMUX_SESSION_NAME}" EXIT
 
